@@ -1,5 +1,6 @@
 package com.jsfc.store.store.collections;
 
+import com.jsfc.store.store.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,6 @@ public class Product {
     private Integer unitsAvailable;
     private Integer minAmountUnits;
     private Integer maxAmountUnits;
-    private User provider;
+    private UserDto provider;
 
 }

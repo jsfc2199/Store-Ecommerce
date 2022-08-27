@@ -1,5 +1,6 @@
 package com.jsfc.store.store.collections;
 
+import com.jsfc.store.store.dto.ProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,6 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private List<Product> products;
+    private List<ProductDto> products;
 }
 
