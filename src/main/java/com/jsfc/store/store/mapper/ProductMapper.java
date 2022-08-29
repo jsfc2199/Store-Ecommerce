@@ -2,7 +2,11 @@ package com.jsfc.store.store.mapper;
 
 import com.jsfc.store.store.collections.Product;
 import com.jsfc.store.store.dto.ProductDto;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
+@Component
+@EnableWebFlux
 public class ProductMapper {
 
     public ProductDto fromProductToDTO(Product product){
