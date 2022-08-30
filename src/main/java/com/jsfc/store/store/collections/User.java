@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Pattern;
+
 import java.util.List;
 
 
@@ -21,16 +21,15 @@ public class User {
     @Id
     private String id;
 
+    private String name;
 
-    private String nombre;
-
-    //@Indexed(unique = true)
+    @Indexed(unique = true)
     private String contactCellPhoneNumber;
 
-    //@Indexed(unique = true)
+    @Indexed(unique = true)
     private String passportId;
 
-    //@Indexed(unique = true)
+    @Indexed(unique = true)
     private String email;
 
     private String password;

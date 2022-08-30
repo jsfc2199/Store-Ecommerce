@@ -4,11 +4,13 @@ import com.jsfc.store.store.dto.UserDto;
 import com.jsfc.store.store.mapper.UserMapper;
 import com.jsfc.store.store.repository.IUserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
 @Service
+@Validated
 public class PostUserUseCase {
 
     private final IUserRepository userRepository;

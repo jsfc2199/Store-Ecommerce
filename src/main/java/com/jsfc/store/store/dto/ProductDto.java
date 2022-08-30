@@ -1,6 +1,5 @@
 package com.jsfc.store.store.dto;
 
-import com.jsfc.store.store.collections.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
