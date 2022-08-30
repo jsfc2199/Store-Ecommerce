@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class UserDto {
@@ -46,6 +47,18 @@ public class UserDto {
     @Pattern(regexp = "^((admin|provider|client))$", message = "The field doesn't match with the correct roles. Just can be admin, provider client")
     private String role;
 
-    @NotNull(message = "Please enter at least an empty list of products")
     private List<ProductDto> products;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserDto)) return false;
+        UserDto userDto = (UserDto) o;
+        return Objects.equals(getId(), userDto.getId()) && Objects.equals(getName(), userDto.getName()) && Objects.equals(getContactCellPhoneNumber(), userDto.getContactCellPhoneNumber()) && Objects.equals(getPassportId(), userDto.getPassportId()) && Objects.equals(getEmail(), userDto.getEmail()) && Objects.equals(getPassword(), userDto.getPassword()) && Objects.equals(getRole(), userDto.getRole()) && Objects.equals(getProducts(), userDto.getProducts());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getContactCellPhoneNumber(), getPassportId(), getEmail(), getPassword(), getRole(), getProducts());
+    }
 }
