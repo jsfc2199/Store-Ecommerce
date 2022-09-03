@@ -47,18 +47,19 @@ public class UserDto {
     @Pattern(regexp = "^((admin|provider|client))$", message = "The field doesn't match with the correct roles. Just can be admin, provider client")
     private String role;
 
-    private List<ProductDto> products;
+    //private List<ProductDto> products;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserDto)) return false;
         UserDto userDto = (UserDto) o;
-        return Objects.equals(getId(), userDto.getId()) && Objects.equals(getName(), userDto.getName()) && Objects.equals(getContactCellPhoneNumber(), userDto.getContactCellPhoneNumber()) && Objects.equals(getPassportId(), userDto.getPassportId()) && Objects.equals(getEmail(), userDto.getEmail()) && Objects.equals(getPassword(), userDto.getPassword()) && Objects.equals(getRole(), userDto.getRole()) && Objects.equals(getProducts(), userDto.getProducts());
+        return Objects.equals(getId(), userDto.getId()) && Objects.equals(getName(), userDto.getName()) && Objects.equals(getContactCellPhoneNumber(), userDto.getContactCellPhoneNumber()) && Objects.equals(getPassportId(), userDto.getPassportId()) && Objects.equals(getEmail(), userDto.getEmail()) && Objects.equals(getPassword(), userDto.getPassword()) && Objects.equals(getRole(), userDto.getRole());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getContactCellPhoneNumber(), getPassportId(), getEmail(), getPassword(), getRole(), getProducts());
+        return Objects.hash(getId(), getName(), getContactCellPhoneNumber(), getPassportId(), getEmail(), getPassword(), getRole());
     }
 }

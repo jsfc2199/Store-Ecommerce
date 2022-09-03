@@ -34,6 +34,6 @@ public class User {
 
     private String password;
     private String role;
-    private List<ProductDto> products;
+    //private List<ProductDto> products;
 }
 

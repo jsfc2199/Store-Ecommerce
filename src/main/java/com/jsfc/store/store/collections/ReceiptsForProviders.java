@@ -23,7 +23,6 @@ public class ReceiptsForProviders {
 
     private String date;
 
-    @Indexed(unique = true)
     private String providerId;
 
 }

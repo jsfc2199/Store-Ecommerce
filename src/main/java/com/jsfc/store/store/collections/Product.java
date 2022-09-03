@@ -20,6 +20,6 @@ public class Product {
     private Integer unitsAvailable;
     private Integer minAmountUnits;
     private Integer maxAmountUnits;
-    private UserDto provider;
+    private UserDto provider; //only if its role is provider
 
 }

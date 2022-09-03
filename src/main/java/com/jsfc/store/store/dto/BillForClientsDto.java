@@ -27,7 +27,6 @@ public class BillForClientsDto {
     @NotBlank(message = "Please enter the seller's name")
     private String sellerName;
 
-    @NotBlank(message = "Please enter the products")
     private List<Product> productsBought;
 
     @NotBlank(message = "Please enter the total payment")

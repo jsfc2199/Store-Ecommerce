@@ -24,7 +24,9 @@ public class PostUserUseCase {
 
     //Save the userDto converting it from dto to user, and then returns the user converting it from user to dto
     public Mono<UserDto> createUser(@Valid UserDto userDto){
-        AtomicReference<Boolean> flag = new AtomicReference<>(false);
+        return userRepository.save(userMapper.fromDTOToUser(userDto)).map(user -> userMapper.fromUserToDTO(user));
+
+        /*AtomicReference<Boolean> flag = new AtomicReference<>(false);
 
         userDto.getProducts().forEach(productDto -> {
             if(productDto.getProvider().getRole().equals("provider")){
@@ -38,6 +40,6 @@ public class PostUserUseCase {
             return userRepository.save(userMapper.fromDTOToUser(userDto)).map(user -> userMapper.fromUserToDTO(user));
         }
 
-       return Mono.error(new IllegalArgumentException("The type of user inside the list of products must be 'provider'"));
+       return Mono.error(new IllegalArgumentException("The type of user inside the list of products must be 'provider'"));*/
     }
 }
