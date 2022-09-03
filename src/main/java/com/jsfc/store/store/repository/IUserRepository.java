@@ -8,4 +8,5 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface IUserRepository extends ReactiveMongoRepository<User, String> {
     Mono<User> getBypassportId(String passportId);
+    Mono<User> getByEmail(String email);
 }
