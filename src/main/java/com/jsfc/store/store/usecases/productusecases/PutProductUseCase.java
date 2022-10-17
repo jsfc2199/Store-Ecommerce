@@ -1,5 +1,6 @@
 package com.jsfc.store.store.usecases.productusecases;
 
+import com.jsfc.store.store.collections.Product;
 import com.jsfc.store.store.dto.ProductDto;
 import com.jsfc.store.store.mapper.ProductMapper;
 import com.jsfc.store.store.repository.IProductRepository;
@@ -11,18 +12,17 @@ import javax.validation.Valid;
 
 @Service
 @Validated
-public class PostProductUseCase {
+public class PutProductUseCase {
 
-    private final IProductRepository productRepository;
     private final ProductMapper productMapper;
+    private final IProductRepository productRepository;
 
-    public PostProductUseCase(IProductRepository productRepository, ProductMapper productMapper) {
-        this.productRepository = productRepository;
+    public PutProductUseCase(ProductMapper productMapper, IProductRepository productRepository) {
         this.productMapper = productMapper;
+        this.productRepository = productRepository;
     }
 
-    public Mono<ProductDto> postProduct(@Valid ProductDto productDto) {
-
+    public Mono<ProductDto> updateProduct(@Valid ProductDto productDto){
         if(validator(productDto)){
             return productRepository.save(productMapper.fromDTOtoProduct(productDto)).map(product -> productMapper.fromProductToDTO(product));
         }
