@@ -1,10 +1,14 @@
 package com.jsfc.store.store.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Data
@@ -13,25 +17,41 @@ import java.util.Objects;
 public class ProductDto {
     private String id;
 
+    @NotNull(message = "This field can't be null")
     @NotBlank(message = "Please enter the product's name")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$", message = "This field doesn't match with the valid format. At least two letters")
     private String name;
 
+    @NotNull(message = "This field can't be null")
+    @NotBlank(message = "Please enter the product's brand")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$", message = "This field doesn't match with the valid format. At least two letters")
+    private String brand;
+
+    @NotNull(message = "This field can't be null")
     @NotBlank(message = "Please enter the product's description")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$", message = "This field doesn't match with the valid format. At least two letters")
     private String description;
 
-    @NotBlank(message = "Please enter the product's price")
+    @NotNull(message = "This field can't be null")
+    @PositiveOrZero(message = "This field must be equal or greater than zero")
     private Double price;
 
-    @NotBlank(message = "Please enter the product's units available")
+    @Min(value = 0, message = "You can't have less than zero units")
+    @NotNull(message = "This field can't be null")
+    @PositiveOrZero(message = "This field must be equal or greater than zero")
     private Integer unitsAvailable;
 
-    @NotBlank(message = "Please enter the product's minimum units")
+    @Min(value = 0, message = "You can't have less than zero units")
+    @NotNull(message = "This field can't be null")
+    @PositiveOrZero(message = "This field must be equal or greater than zero")
     private Integer minAmountUnits;
 
-    @NotBlank(message = "Please enter the product's maximum units")
+    @NotNull(message = "This field can't be null")
+    @Positive(message = "This field must be positive")
     private Integer maxAmountUnits;
 
-    @NotBlank(message = "Please enter a provider")
+    @NotNull(message = "This field can't be null")
+    @Valid
     private UserDto provider;
 
     @Override

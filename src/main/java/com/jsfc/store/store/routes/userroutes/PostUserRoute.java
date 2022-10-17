@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
@@ -28,17 +29,16 @@ public class PostUserRoute {
                         .flatMap(userDto -> ServerResponse.status(HttpStatus.CREATED)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(userDto))
-
-                        .onErrorResume(
-                                error -> {
-                                    if (error.getClass().equals(DuplicateKeyException.class)) {
-                                        return ServerResponse.status(HttpStatus.BAD_REQUEST)
-                                                .contentType(MediaType.APPLICATION_JSON)
-                                                .bodyValue("Some values are the same from another user, please check the fields and fix them" + "\n\n" + error.getMessage());
-                                    }
-                                    return ServerResponse.status(HttpStatus.BAD_REQUEST)
-                                            .contentType(MediaType.APPLICATION_JSON)
-                                            .bodyValue(error.getMessage());
-                                }));
+                        .onErrorResume(error -> {
+                            if (error.getClass().equals(DuplicateKeyException.class)) {
+                                return ServerResponse.status(HttpStatus.BAD_REQUEST)
+                                        .contentType(MediaType.APPLICATION_JSON)
+                                        .bodyValue("Some values are the same from another user, please check the fields and fix them" + "\n\n" + error.getMessage());
+                            }
+                            return ServerResponse.status(HttpStatus.BAD_REQUEST)
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .bodyValue(error.getMessage());
+                        }));
     }
+
 }

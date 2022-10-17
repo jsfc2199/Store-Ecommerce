@@ -13,6 +13,7 @@ public class ProductMapper {
         return new ProductDto(
                 product.getId(),
                 product.getName(),
+                product.getBrand(),
                 product.getDescription(),
                 product.getPrice(),
                 product.getUnitsAvailable(),
@@ -26,6 +27,7 @@ public class ProductMapper {
         return new Product(
                 productDto.getId(),
                 productDto.getName(),
+                productDto.getBrand(),
                 productDto.getDescription(),
                 productDto.getPrice(),
                 productDto.getUnitsAvailable(),
